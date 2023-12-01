@@ -24,14 +24,25 @@ public class MediaPlayer {
 
 
     public void abbassaVolume() {
+        System.out.println("----------------Volume------------");
         if (volume > 0) {
             volume--;
             System.out.println("Abbasso a: " + volume);
         } else {
             System.out.println("Volume è già al minimo");
         }
+        System.out.println("-----------------------------------");
     }
-
+    public void alzaVolume() {
+        System.out.println("----------------Volume------------");
+        if (volume < 10) {
+            volume++;
+            System.out.println("Alzo a: " + volume);
+        } else {
+            System.out.println("Volume è già al massimmo");
+        }
+        System.out.println("------------------------------------");
+    }
     public void alzaLum() {
 
         if (lumi < 10) {
@@ -43,6 +54,7 @@ public class MediaPlayer {
 
     }
     public void abbassaLum() {
+
         if (lumi > 0) {
             lumi--;
             System.out.println("Abbasso a: " + lumi);
@@ -51,14 +63,7 @@ public class MediaPlayer {
         }
     }
 
-    public void alzaVolume() {
-        if (volume < 10) {
-            volume++;
-            System.out.println("Alzo a: " + volume);
-        } else {
-            System.out.println("Volume è già al massimmo");
-        }
-    }
+
 
 
 
@@ -69,8 +74,7 @@ public class MediaPlayer {
     public double getDurata() {
         return durata;
     }
-    //non so perchè entro sempre nel default e non uso la durata fornita nelle classi
-    // idem per il volume
+
     public void play() {
         System.out.println("Playing: " + titolo + ". Format: " + mediaFormat);
         if (mediaFormat == MediaFormat.VIDEO || mediaFormat == MediaFormat.VOCALI) {
