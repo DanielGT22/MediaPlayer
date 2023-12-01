@@ -4,6 +4,7 @@ public class MediaPlayer {
     private double durata;
     private String titolo;
     private int volume;
+    private int lumi;
     MediaFormat mediaFormat;
 
 
@@ -14,9 +15,10 @@ public class MediaPlayer {
         this.durata = durata;
     }
 
-    public MediaPlayer(String titolo, MediaFormat mediaFormat) {
+    public MediaPlayer(String titolo, MediaFormat mediaFormat, int lumi) {
         this.titolo = titolo;
         this.mediaFormat = mediaFormat;
+        this.lumi = lumi;
 
     }
 
@@ -26,7 +28,26 @@ public class MediaPlayer {
             volume--;
             System.out.println("Abbasso a: " + volume);
         } else {
-            System.out.println("Volume is already at 0");
+            System.out.println("Volume è già al minimo");
+        }
+    }
+
+    public void alzaLum() {
+
+        if (lumi < 10) {
+            lumi++;
+            System.out.println( lumi);
+        } else {
+            System.out.println("Max lumi");
+        }
+
+    }
+    public void abbassaLum() {
+        if (lumi > 0) {
+            lumi--;
+            System.out.println("Abbasso a: " + lumi);
+        } else {
+            System.out.println("lumi è già al minimo");
         }
     }
 
@@ -35,9 +56,10 @@ public class MediaPlayer {
             volume++;
             System.out.println("Alzo a: " + volume);
         } else {
-            System.out.println("Volume is already at 10");
+            System.out.println("Volume è già al massimmo");
         }
     }
+
 
 
     public int getVolume() {
@@ -56,14 +78,23 @@ public class MediaPlayer {
             System.out.println("Volume: " + getVolume() );
         } else {
             System.out.println("Immagini sono eterne.");
+            System.out.println("Luminosità:");
+            for (int i = 0; i < lumi ; i++) {
+                for (int z = 0; z <= i; z++) {
+                    System.out.print("*");
+                }System.out.println();
+            }
         }
     }
 
-    public static void main(String[] args) {
-        MediaPlayer playerVocale = new MediaPlayer("Questo è un audio", MediaFormat.VOCALI, 20, 7);
-        playerVocale.play();
 
-        MediaPlayer playerImmagine = new MediaPlayer("Questo è un img", MediaFormat.IMMAGINE);
+    public static void main(String[] args) {
+        MediaPlayer playerVocale = new MediaPlayer("Questo è un audio", MediaFormat.VOCALI, 20, 9);
+        playerVocale.play();
+        playerVocale.alzaVolume();
+        playerVocale.alzaVolume();
+        playerVocale.abbassaVolume();
+        MediaPlayer playerImmagine = new MediaPlayer("Questo è un img", MediaFormat.IMMAGINE, 7);
         playerImmagine.play();
 
         MediaPlayer playerVideo = new MediaPlayer("questo è un video", MediaFormat.VIDEO, 50, 4);
@@ -73,5 +104,5 @@ public class MediaPlayer {
         playerVideo.alzaVolume();
         playerVideo.alzaVolume();
     }
-    
+
 }
