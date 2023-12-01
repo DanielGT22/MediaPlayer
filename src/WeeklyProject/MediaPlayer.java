@@ -2,33 +2,69 @@ package WeeklyProject;
 
 public class MediaPlayer {
     private String titolo;
+    private int volume;
     MediaFormat mediaFormat;
 
-    static double Durata = 60.20;
 
     public MediaPlayer(String titolo, MediaFormat mediaFormat) {
         this.titolo = titolo;
         this.mediaFormat = mediaFormat;
+        this.volume = 5;
     }
 
     public MediaPlayer() {
     }
+    public void abbassaVolume() {
+        if (volume > 0) {
+            volume--;
+            System.out.println("Abbasso a: " + volume);
+        } else {
+            System.out.println("Volume is already at 0");
+        }
+    }
 
+    public void alzaVolume() {
+        if (volume < 10) {
+            volume++;
+            System.out.println("Alzo a: " + volume);
+        } else {
+            System.out.println("Volume is already at 10");
+        }
+    }
+
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public double getDurata() {
+        return 72.12;
+    }
+    //non so perchè entro sempre nel default e non uso la durata fornita nelle classi
+    // idem per il volume
     public void play() {
-        System.out.println("Play" + titolo + "." + mediaFormat);
+        System.out.println("Playing: " + titolo + ". Format: " + mediaFormat);
+        if (mediaFormat == MediaFormat.VIDEO || mediaFormat == MediaFormat.VOCALI) {
+            System.out.println("Durata " + this.getDurata() + " secondi");
+            System.out.println("Volume: " + getVolume() );
+        } else {
+            System.out.println("Immagini sono eterne.");
+        }
     }
-
+    
     public static void main(String[] args) {
-        MediaPlayer playerVocale = new MediaPlayer("questo è un format ", MediaFormat.VOCALI);
+        MediaPlayer playerVocale = new MediaPlayer("Questo è un audio", MediaFormat.VOCALI);
         playerVocale.play();
-        System.out.println("Durata: " + Durata + " seconds");
 
-        MediaPlayer playerImmagine = new MediaPlayer("questo è un format", MediaFormat.IMMAGINE);
+        MediaPlayer playerImmagine = new MediaPlayer("Questo è un img", MediaFormat.IMMAGINE);
         playerImmagine.play();
-        System.out.println("Questo è un img, non ha una durata");
 
-        MediaPlayer playerVideo = new MediaPlayer("questo è un format", MediaFormat.VIDEO);
+        MediaPlayer playerVideo = new MediaPlayer("questo è un video", MediaFormat.VIDEO);
         playerVideo.play();
-        System.out.println("Durata: " + Durata + " secondi");
+        System.out.println("------------------------------------");
+        playerVideo.abbassaVolume();
+        playerVideo.alzaVolume();
+        playerVideo.alzaVolume();
     }
+
 }
