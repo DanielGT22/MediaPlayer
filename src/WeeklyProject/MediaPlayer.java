@@ -1,19 +1,26 @@
 package WeeklyProject;
 
 public class MediaPlayer {
+    private double durata;
     private String titolo;
     private int volume;
     MediaFormat mediaFormat;
 
 
+    public MediaPlayer(String titolo, MediaFormat mediaFormat,double durata, int volume) {
+        this.titolo = titolo;
+        this.mediaFormat = mediaFormat;
+        this.volume = volume;
+        this.durata = durata;
+    }
+
     public MediaPlayer(String titolo, MediaFormat mediaFormat) {
         this.titolo = titolo;
         this.mediaFormat = mediaFormat;
-        this.volume = 5;
+
     }
 
-    public MediaPlayer() {
-    }
+
     public void abbassaVolume() {
         if (volume > 0) {
             volume--;
@@ -38,7 +45,7 @@ public class MediaPlayer {
     }
 
     public double getDurata() {
-        return 72.12;
+        return durata;
     }
     //non so perchè entro sempre nel default e non uso la durata fornita nelle classi
     // idem per il volume
@@ -51,20 +58,20 @@ public class MediaPlayer {
             System.out.println("Immagini sono eterne.");
         }
     }
-    
+
     public static void main(String[] args) {
-        MediaPlayer playerVocale = new MediaPlayer("Questo è un audio", MediaFormat.VOCALI);
+        MediaPlayer playerVocale = new MediaPlayer("Questo è un audio", MediaFormat.VOCALI, 20, 7);
         playerVocale.play();
 
         MediaPlayer playerImmagine = new MediaPlayer("Questo è un img", MediaFormat.IMMAGINE);
         playerImmagine.play();
 
-        MediaPlayer playerVideo = new MediaPlayer("questo è un video", MediaFormat.VIDEO);
+        MediaPlayer playerVideo = new MediaPlayer("questo è un video", MediaFormat.VIDEO, 50, 4);
         playerVideo.play();
         System.out.println("------------------------------------");
         playerVideo.abbassaVolume();
         playerVideo.alzaVolume();
         playerVideo.alzaVolume();
     }
-
+    
 }

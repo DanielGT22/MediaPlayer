@@ -2,9 +2,10 @@ package WeeklyProject;
 
 public class Video extends MediaPlayer {
     private static final double durata = 30.0;
-
+    private int volume = 7;
     public Video(String titolo) {
-        super(titolo, MediaFormat.VIDEO);
+        super(titolo, MediaFormat.VIDEO, durata, 7);
+
 
 
     }
@@ -14,7 +15,7 @@ public class Video extends MediaPlayer {
     }
     @Override
     public int getVolume() {
-        return super.getVolume();
+        return volume;
     }
 }
 
